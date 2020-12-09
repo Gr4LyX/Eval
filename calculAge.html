@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CalculAge</title>
+</head>
+
+<body>
+    <form onsubmit="return false">
+        <label for="name">Nom :</label>
+        <input type="text" name="name" id="name" placeholder="Saisir votre nom" required>
+        <label for="firstname">Prénom :</label>
+        <input type="text" name="firstname" id="firstname" placeholder="Saisir votre prénom" required>
+        <label for="birthdate">Date de naissance :</label>
+        <input type="date" name="birthdate" id="birthdate" required>
+        <button onclick="calculage()">Connaitre votre age</button>
+    </form>
+</body>
+<script>
+    function calculage() {
+        let name = document.getElementById("name").value;
+        let firstname = document.getElementById("firstname").value;
+        let birthdate = new Date(document.getElementById("birthdate").value);
+       
+        let date = new Date(); 
+
+        let birthday = birthdate.getDate();
+        let birthmonth = birthdate.getMonth() + 1;
+        let birthYear = birthdate.getFullYear();
+
+        let dateDay = date.getDate();
+        let dateMonth = date.getMonth() +1;
+        let dateYear = date.getFullYear();
+
+        let diff = date - birthdate;
+       
+        let days = parseInt(diff / 1000 / 60 / 60 / 24);
+      
+        let years = parseInt(days / 365.25);
+
+        let anniversaire = birthday === dateDay && birthmonth === dateMonth
+
+        if(anniversaire && years === 1){
+            alert("Joyeux anniversaire " + firstname + " " + name + " !!! ajourd'hui tu as " + years + " ans.");
+        } else if(anniversaire) {
+            alert("Joyeux anniversaire " + firstname + " " + name + " !!! ajourd'hui vous avez " + years + " ans.");
+        } else {
+            alert("Bonjour, " + firstname + " " + name + "Vous avez " + years + " ans.");
+        }
+        
+    }
+</script>
+
+</html>
